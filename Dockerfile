@@ -17,7 +17,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Copy Reacher binary from the first stage into the final image
-COPY --from=reacher /reacher_backend /usr/local/bin/reacher_backend
+COPY --from=reacher /home/reacher/bin/reacher_backend /usr/local/bin/reacher_backend
 
 # Ensure entrypoint is executable
 RUN chmod +x /entrypoint.sh
