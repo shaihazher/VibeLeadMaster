@@ -22,7 +22,7 @@ RUN curl -L https://github.com/reacherhq/backend/releases/download/v0.10.1/reach
     chmod +x /usr/local/bin/reacher_backend
 
 # Make sure your entrypoint is executable
-RUN chmod +x /entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
 
 EXPOSE 10000
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
