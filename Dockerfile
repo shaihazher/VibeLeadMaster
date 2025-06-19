@@ -1,5 +1,5 @@
 # ---------- Stage 1: grab the binary ----------
-FROM reacherhq/backend:0.10.1 AS reacher   # pin to a known-good tag
+FROM reacherhq/backend:0.10.1 AS reacher
 
 # ---------- Stage 2: your Python service -----
 FROM python:3.10-slim
