@@ -1,10 +1,9 @@
-# FastAPI + MailScout + Reacher
+# FastAPI + MailScout
 
 This project bundles a FastAPI service that:
 
 1. Generates likely email addresses from `first_name`, `last_name`, and `domain` using **MailScout**
-2. Validates each candidate using an embedded **Reacher** SMTP verification engine
-3. Returns the first deliverable email or a meaningful error response
+2. Returns the first deliverable email or a meaningful error response
 
 ## Endpoints
 
