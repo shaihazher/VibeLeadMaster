@@ -1,5 +1,5 @@
 # ---------- Stage 1: grab the binary ----------
-FROM reacherhq/backend:0.10.1 AS reacher
+FROM reacherhq/backend:v0.10.1 AS reacher
 
 # ---------- Stage 2: your Python service -----
 FROM python:3.10-slim
