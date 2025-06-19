@@ -1,27 +1,23 @@
-# ---------- Stage 1: obtain Reacher binary ----------
-FROM reacherhq/backend:latest AS reacher
+# ---------- Stage 1: grab the binary ----------
+FROM reacherhq/backend:0.10.1 AS reacher   # pin to a known-good tag
 
-# ---------- Stage 2: final image ----------
+# ---------- Stage 2: your Python service -----
 FROM python:3.10-slim
 
 ENV PYTHONUNBUFFERED=1
 ENV PORT=10000
-
 WORKDIR /app
 
-# Install Python dependencies
+# Python deps
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# App source
 COPY . .
 
-# Copy Reacher binary from the first stage into the final image
-COPY --from=reacher /home/reacher/bin/reacher_backend /usr/local/bin/reacher_backend
-
-# Ensure entrypoint is executable
-RUN chmod +x /entrypoint.sh
+# Reacher CLI
+COPY --from=reacher /reacher_backend /usr/local/bin/reacher_backend
+RUN chmod +x /usr/local/bin/reacher_backend /entrypoint.sh
 
 EXPOSE 10000
-
 ENTRYPOINT ["/entrypoint.sh"]
