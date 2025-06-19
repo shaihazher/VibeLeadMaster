@@ -37,8 +37,6 @@ async def generate_email(data: InputData):
     candidates = scout.find_valid_emails(
         data.domain,
         [[data.first_name, data.last_name]],
-        check_variants=True,
-        check_catchall=True
     )
     if not candidates:
         raise HTTPException(status_code=404, detail="No candidate emails generated")
